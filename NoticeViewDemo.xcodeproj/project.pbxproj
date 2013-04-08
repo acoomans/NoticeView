@@ -23,6 +23,8 @@
 		5179D3DA171244A600B5C68A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5179D3B5171244A600B5C68A /* Foundation.framework */; };
 		5179D3E2171244A600B5C68A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5179D3E0171244A600B5C68A /* InfoPlist.strings */; };
 		5179D3E5171244A600B5C68A /* NoticeViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179D3E4171244A600B5C68A /* NoticeViewDemoTests.m */; };
+		5179D3F1171244DB00B5C68A /* ACNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179D3F0171244DB00B5C68A /* ACNoticeView.m */; };
+		5179D3F417124CC000B5C68A /* ACDemoNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179D3F317124CC000B5C68A /* ACDemoNoticeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,10 @@
 		5179D3E1171244A600B5C68A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5179D3E3171244A600B5C68A /* NoticeViewDemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeViewDemoTests.h; sourceTree = "<group>"; };
 		5179D3E4171244A600B5C68A /* NoticeViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeViewDemoTests.m; sourceTree = "<group>"; };
+		5179D3EF171244DB00B5C68A /* ACNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACNoticeView.h; sourceTree = "<group>"; };
+		5179D3F0171244DB00B5C68A /* ACNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACNoticeView.m; sourceTree = "<group>"; };
+		5179D3F217124CC000B5C68A /* ACDemoNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACDemoNoticeView.h; sourceTree = "<group>"; };
+		5179D3F317124CC000B5C68A /* ACDemoNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACDemoNoticeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 		5179D3A7171244A600B5C68A = {
 			isa = PBXGroup;
 			children = (
+				5179D3EE171244BC00B5C68A /* NoticeView */,
 				5179D3B9171244A600B5C68A /* NoticeViewDemo */,
 				5179D3DD171244A600B5C68A /* NoticeViewDemoTests */,
 				5179D3B2171244A600B5C68A /* Frameworks */,
@@ -122,6 +129,8 @@
 				5179D3CB171244A600B5C68A /* ACViewController.h */,
 				5179D3CC171244A600B5C68A /* ACViewController.m */,
 				5179D3CE171244A600B5C68A /* ACViewController.xib */,
+				5179D3F217124CC000B5C68A /* ACDemoNoticeView.h */,
+				5179D3F317124CC000B5C68A /* ACDemoNoticeView.m */,
 				5179D3BA171244A600B5C68A /* Supporting Files */,
 			);
 			path = NoticeViewDemo;
@@ -158,6 +167,15 @@
 				5179D3E0171244A600B5C68A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5179D3EE171244BC00B5C68A /* NoticeView */ = {
+			isa = PBXGroup;
+			children = (
+				5179D3EF171244DB00B5C68A /* ACNoticeView.h */,
+				5179D3F0171244DB00B5C68A /* ACNoticeView.m */,
+			);
+			path = NoticeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +292,8 @@
 				5179D3C0171244A600B5C68A /* main.m in Sources */,
 				5179D3C4171244A600B5C68A /* ACAppDelegate.m in Sources */,
 				5179D3CD171244A600B5C68A /* ACViewController.m in Sources */,
+				5179D3F1171244DB00B5C68A /* ACNoticeView.m in Sources */,
+				5179D3F417124CC000B5C68A /* ACDemoNoticeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

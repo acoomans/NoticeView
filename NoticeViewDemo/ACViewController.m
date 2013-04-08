@@ -7,6 +7,7 @@
 //
 
 #import "ACViewController.h"
+#import "ACDemoNoticeView.h"
 
 @interface ACViewController ()
 
@@ -14,16 +15,20 @@
 
 @implementation ACViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)noticeButtonTapped:(id)sender {
+    ACDemoNoticeView *demoNoticeView = [[ACDemoNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+    
+    [demoNoticeView showInView:self.view
+                      animated:YES
+             dismissAfterDelay:2.0
+                    completion:^{
+                        NSLog(@"completed");
+                    }];
 }
 
 @end
