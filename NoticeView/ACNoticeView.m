@@ -11,6 +11,12 @@
 //static NSTimeInterval kACNoticeViewDelay = 2.0;
 static NSTimeInterval kACNoticeViewDuration = 0.28;
 
+
+@interface ACNoticeView ()
+@property (nonatomic, copy) void(^didDismissOnTap)();
+@end
+
+
 @implementation ACNoticeView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -22,6 +28,10 @@ static NSTimeInterval kACNoticeViewDuration = 0.28;
         //self.delay = kACNoticeViewDelay;
         self.animationDuration = kACNoticeViewDuration;
         //self.completion = nil;
+        self.didDismissOnTap = nil;
+        
+        self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+        [self addGestureRecognizer:self.tapGestureRecognizer];
         
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
     }
@@ -86,5 +96,23 @@ static NSTimeInterval kACNoticeViewDuration = 0.28;
           }];
 }
 
+- (void)setDismissOnTap:(BOOL)dismissOnTap completion:(void (^)(void))completion {
+    self.dismissOnTap = dismissOnTap;
+    self.didDismissOnTap = completion;
+}
+
+#pragma mark - actions
+
+- (void)tapped:(UITapGestureRecognizer*)tapGestureRecognizer {
+    if (self.dismissOnTap) {
+        [self dismissAfterDelay:0
+                       animated:YES
+                     completion:^{
+                         if (self.didDismissOnTap) {
+                             self.didDismissOnTap();
+                         }
+                     }];
+    }
+}
 
 @end
