@@ -22,7 +22,7 @@ static NSTimeInterval kACNoticeViewDuration = 0.28;
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.appearOnTop = NO;
+        self.appearOnTop = YES;
         self.dismissOnTap = YES;
         //self.dismissAfterDelay = YES;
         //self.delay = kACNoticeViewDelay;
@@ -52,13 +52,56 @@ static NSTimeInterval kACNoticeViewDuration = 0.28;
                           delay:0
                         options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseIn
                      animations:^{
+                         /*
                          self.frame = CGRectOffset(self.frame, 0, CGRectGetHeight(self.bounds));
+                         
+                         if (!self.appearOnTop) {
+                             for (UIView *subview in view.subviews) {
+                                 if (subview == self) continue;
+                                 subview.frame = CGRectOffset(<#CGRect rect#>, <#CGFloat dx#>, <#CGFloat dy#>)
+                                 
+                                 
+                                 
+                                 CGRect frame = subview.frame;
+                                 frame.size.height = MIN(frame.size.height, view.frame.size.height - CGRectGetHeight(self.frame));
+                                 if (frame.origin.y+frame.size.height < self.view.frame.size.height) {
+                                     frame.origin.y += self.noticeViewHeight;
+                                 } else {
+                                     frame.origin.y -= self.view.frame.size.height - (frame.origin.y+frame.size.height);
+                                 }
+                                 subview.frame = frame;
+                                 
+                                 
+                                 
+                                 
+                                 
+                             }
+                         }
+                          */
+                         
+                         for (UIView *subview in view.subviews) {
+                             if (
+                                    (subview == self || !self.appearOnTop) &&
+                                    ![self viewPositionIsFixedAtBottom:subview]
+                                 ) {
+                                 subview.frame = CGRectOffset(subview.frame, 0, CGRectGetHeight(self.bounds));
+                             }
+                         }
+                         
                      }
                      completion:^(BOOL finished) {
                          if (completion) {
                              completion();
                          }
                      }];
+}
+
+- (BOOL)viewPositionIsFixedAtBottom:(UIView*)view {
+    BOOL viewPositionIsFixedAtBottom = (
+                                        (view.autoresizingMask & UIViewAutoresizingFlexibleTopMargin) &&
+                                        !(view.autoresizingMask & UIViewAutoresizingFlexibleBottomMargin)
+    );
+    return viewPositionIsFixedAtBottom;
 }
 
 - (void)dismissAfterDelay:(NSTimeInterval)delay animated:(BOOL)animated completion:(void (^)(void))completion {
@@ -68,7 +111,17 @@ static NSTimeInterval kACNoticeViewDuration = 0.28;
                               delay:0
                             options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut
                          animations:^{
-                             self.frame = CGRectOffset(self.frame, 0, -CGRectGetHeight(self.bounds));
+                             //self.frame = CGRectOffset(self.frame, 0, -CGRectGetHeight(self.bounds));
+                             
+                             for (UIView *subview in self.superview.subviews) {
+                                 if (
+                                     (subview == self || !self.appearOnTop) &&
+                                     ![self viewPositionIsFixedAtBottom:subview]
+                                     ) {
+                                     subview.frame = CGRectOffset(subview.frame, 0, -CGRectGetHeight(self.bounds));
+                                 }
+                             }
+                             
                          }
                          completion:^(BOOL finished) {
                              if (completion) {

@@ -7,10 +7,12 @@
 //
 
 #import "ACViewController.h"
-#import "ACDemoNoticeView.h"
+#import "ACNoticeView.h"
+#import "ACDemoOnTopNoticeView.h"
+#import "ACDemoInlineNoticeView.h"
 
 @interface ACViewController ()
-@property (nonatomic, strong) ACDemoNoticeView *demoNoticeView;
+@property (atomic, strong) ACNoticeView *demoNoticeView;
 @end
 
 @implementation ACViewController
@@ -23,8 +25,9 @@
 #pragma mark - actions
 
 - (IBAction)showAndDismissButtonTapped:(id)sender {
-    self.demoNoticeView = [[ACDemoNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+    if (self.demoNoticeView) return;
     
+    self.demoNoticeView = [[ACDemoOnTopNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
     [self.demoNoticeView showInView:self.view
                       animated:YES
              dismissAfterDelay:2.0
@@ -35,10 +38,9 @@
 }
 
 - (IBAction)showButtonTapped:(id)sender {
-    if (!self.demoNoticeView) {
-        self.demoNoticeView = [[ACDemoNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
-    }
+    if (self.demoNoticeView) return;
     
+    self.demoNoticeView = [[ACDemoOnTopNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
     [self.demoNoticeView showInView:self.view
                            animated:YES
                          completion:nil];
@@ -51,6 +53,19 @@
                                     NSLog(@"dismissed");
                                     self.demoNoticeView = nil;
                                 }];
+}
+
+- (IBAction)slideDownButtonTapped:(id)sender {
+    if (self.demoNoticeView) return;
+    
+    self.demoNoticeView = [[ACDemoInlineNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+    [self.demoNoticeView showInView:self.view
+                           animated:YES
+                  dismissAfterDelay:2.0
+                         completion:^{
+                             NSLog(@"completed");
+                             self.demoNoticeView = nil;
+                         }];
 }
 
 

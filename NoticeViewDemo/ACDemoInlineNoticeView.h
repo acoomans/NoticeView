@@ -1,5 +1,5 @@
 //
-//  ACDemoNoticeView.h
+//  ACDemoInlineNoticeView.h
 //  NoticeViewDemo
 //
 //  Created by Arnaud Coomans on 4/7/13.
@@ -8,6 +8,6 @@
 
 #import "ACNoticeView.h"
 
-@interface ACDemoNoticeView : ACNoticeView
+@interface ACDemoInlineNoticeView : ACNoticeView
 
 @end

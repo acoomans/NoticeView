@@ -24,7 +24,8 @@
 		5179D3E2171244A600B5C68A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5179D3E0171244A600B5C68A /* InfoPlist.strings */; };
 		5179D3E5171244A600B5C68A /* NoticeViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179D3E4171244A600B5C68A /* NoticeViewDemoTests.m */; };
 		5179D3F1171244DB00B5C68A /* ACNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179D3F0171244DB00B5C68A /* ACNoticeView.m */; };
-		5179D3F417124CC000B5C68A /* ACDemoNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179D3F317124CC000B5C68A /* ACDemoNoticeView.m */; };
+		5179D3F417124CC000B5C68A /* ACDemoOnTopNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179D3F317124CC000B5C68A /* ACDemoOnTopNoticeView.m */; };
+		5179D3F71712600A00B5C68A /* ACDemoInlineNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179D3F61712600900B5C68A /* ACDemoInlineNoticeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +63,10 @@
 		5179D3E4171244A600B5C68A /* NoticeViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeViewDemoTests.m; sourceTree = "<group>"; };
 		5179D3EF171244DB00B5C68A /* ACNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACNoticeView.h; sourceTree = "<group>"; };
 		5179D3F0171244DB00B5C68A /* ACNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACNoticeView.m; sourceTree = "<group>"; };
-		5179D3F217124CC000B5C68A /* ACDemoNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACDemoNoticeView.h; sourceTree = "<group>"; };
-		5179D3F317124CC000B5C68A /* ACDemoNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACDemoNoticeView.m; sourceTree = "<group>"; };
+		5179D3F217124CC000B5C68A /* ACDemoOnTopNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACDemoOnTopNoticeView.h; sourceTree = "<group>"; };
+		5179D3F317124CC000B5C68A /* ACDemoOnTopNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACDemoOnTopNoticeView.m; sourceTree = "<group>"; };
+		5179D3F51712600900B5C68A /* ACDemoInlineNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACDemoInlineNoticeView.h; sourceTree = "<group>"; };
+		5179D3F61712600900B5C68A /* ACDemoInlineNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACDemoInlineNoticeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +132,10 @@
 				5179D3CB171244A600B5C68A /* ACViewController.h */,
 				5179D3CC171244A600B5C68A /* ACViewController.m */,
 				5179D3CE171244A600B5C68A /* ACViewController.xib */,
-				5179D3F217124CC000B5C68A /* ACDemoNoticeView.h */,
-				5179D3F317124CC000B5C68A /* ACDemoNoticeView.m */,
+				5179D3F217124CC000B5C68A /* ACDemoOnTopNoticeView.h */,
+				5179D3F317124CC000B5C68A /* ACDemoOnTopNoticeView.m */,
+				5179D3F51712600900B5C68A /* ACDemoInlineNoticeView.h */,
+				5179D3F61712600900B5C68A /* ACDemoInlineNoticeView.m */,
 				5179D3BA171244A600B5C68A /* Supporting Files */,
 			);
 			path = NoticeViewDemo;
@@ -293,7 +298,8 @@
 				5179D3C4171244A600B5C68A /* ACAppDelegate.m in Sources */,
 				5179D3CD171244A600B5C68A /* ACViewController.m in Sources */,
 				5179D3F1171244DB00B5C68A /* ACNoticeView.m in Sources */,
-				5179D3F417124CC000B5C68A /* ACDemoNoticeView.m in Sources */,
+				5179D3F417124CC000B5C68A /* ACDemoOnTopNoticeView.m in Sources */,
+				5179D3F71712600A00B5C68A /* ACDemoInlineNoticeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
