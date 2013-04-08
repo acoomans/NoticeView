@@ -45,8 +45,10 @@ static NSTimeInterval kACNoticeViewDuration = 0.28;
                          self.frame = CGRectOffset(self.frame, 0, CGRectGetHeight(self.bounds));
                      }
                      completion:^(BOOL finished) {
-                         completion();
-                     }];   
+                         if (completion) {
+                             completion();
+                         }
+                     }];
 }
 
 - (void)dismissAfterDelay:(NSTimeInterval)delay animated:(BOOL)animated completion:(void (^)(void))completion {
