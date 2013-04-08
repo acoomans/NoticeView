@@ -16,14 +16,13 @@ static NSTimeInterval kACNoticeViewDuration = 0.28;
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.appearOnTop = YES;
+        self.appearOnTop = NO;
         self.dismissOnTap = YES;
         //self.dismissAfterDelay = YES;
         //self.delay = kACNoticeViewDelay;
         self.animationDuration = kACNoticeViewDuration;
         //self.completion = nil;
         
-        //self.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
     }
     return self;
