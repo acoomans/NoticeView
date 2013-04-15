@@ -25,47 +25,68 @@
 #pragma mark - actions
 
 - (IBAction)showAndDismissButtonTapped:(id)sender {
-    if (self.demoNoticeView) return;
-    
-    self.demoNoticeView = [[ACDemoOnTopNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
-    [self.demoNoticeView showInView:self.view
-                      animated:YES
-             dismissAfterDelay:2.0
-                    completion:^{
-                        NSLog(@"completed");
-                        self.demoNoticeView = nil;
-                    }];
+    @synchronized(self) {
+        if (self.demoNoticeView) return;
+        
+        __block __weak ACNoticeView *notice = self.demoNoticeView;
+        
+        self.demoNoticeView = [[ACDemoOnTopNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+        [self.demoNoticeView showInView:self.view
+                               animated:YES
+                      dismissAfterDelay:2.0
+                             completion:^{
+                                 NSLog(@"completed");
+                                 if (self.demoNoticeView == notice) {
+                                     self.demoNoticeView = nil;
+                                 }
+                             }];
+    }
 }
 
 - (IBAction)showButtonTapped:(id)sender {
-    if (self.demoNoticeView) return;
-    
-    self.demoNoticeView = [[ACDemoOnTopNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
-    [self.demoNoticeView showInView:self.view
-                           animated:YES
-                         completion:nil];
+    @synchronized(self) {
+        if (self.demoNoticeView) return;
+        
+        self.demoNoticeView = [[ACDemoOnTopNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+        [self.demoNoticeView showInView:self.view
+                               animated:YES
+                             completion:nil];
+    }
 }
 
 - (IBAction)dismissButtonTapped:(id)sender {
-    [self.demoNoticeView dismissAfterDelay:0
-                                  animated:YES
-                                completion:^{
-                                    NSLog(@"dismissed");
-                                    self.demoNoticeView = nil;
-                                }];
+    @synchronized(self) {
+        
+        __block __weak ACNoticeView *notice = self.demoNoticeView;
+        
+        [self.demoNoticeView dismissAfterDelay:0
+                                      animated:YES
+                                    completion:^{
+                                        NSLog(@"dismissed");
+                                        if (self.demoNoticeView == notice) {
+                                            self.demoNoticeView = nil;
+                                        }
+                                    }];
+    }
 }
 
 - (IBAction)slideDownButtonTapped:(id)sender {
-    if (self.demoNoticeView) return;
-    
-    self.demoNoticeView = [[ACDemoInlineNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
-    [self.demoNoticeView showInView:self.view
-                           animated:YES
-                  dismissAfterDelay:2.0
-                         completion:^{
-                             NSLog(@"completed");
-                             self.demoNoticeView = nil;
-                         }];
+    @synchronized(self) {
+        if (self.demoNoticeView) return;
+        
+        __block __weak ACNoticeView *notice = self.demoNoticeView;
+        
+        self.demoNoticeView = [[ACDemoInlineNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+        [self.demoNoticeView showInView:self.view
+                               animated:YES
+                      dismissAfterDelay:2.0
+                             completion:^{
+                                 NSLog(@"completed");
+                                 if (self.demoNoticeView == notice) {
+                                     self.demoNoticeView = nil;
+                                 }
+                             }];
+    }
 }
 
 
