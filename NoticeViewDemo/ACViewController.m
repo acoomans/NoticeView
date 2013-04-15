@@ -28,9 +28,9 @@
     @synchronized(self) {
         if (self.demoNoticeView) return;
         
-        __block __weak ACNoticeView *notice = self.demoNoticeView;
-        
         self.demoNoticeView = [[ACDemoOnTopNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+        
+        __block __weak ACNoticeView *notice = self.demoNoticeView;
         [self.demoNoticeView showInView:self.view
                                animated:YES
                       dismissAfterDelay:2.0
@@ -48,6 +48,15 @@
         if (self.demoNoticeView) return;
         
         self.demoNoticeView = [[ACDemoOnTopNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+        
+        __block __weak ACNoticeView *notice = self.demoNoticeView;
+        __block __weak ACViewController *this = self;
+        [self.demoNoticeView setDismissOnTap:YES completion:^{
+            NSLog(@"completed");
+            if (this.demoNoticeView == notice) {
+                this.demoNoticeView = nil;
+            }
+        }];
         [self.demoNoticeView showInView:self.view
                                animated:YES
                              completion:nil];
@@ -74,9 +83,9 @@
     @synchronized(self) {
         if (self.demoNoticeView) return;
         
-        __block __weak ACNoticeView *notice = self.demoNoticeView;
-        
         self.demoNoticeView = [[ACDemoInlineNoticeView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+        
+        __block __weak ACNoticeView *notice = self.demoNoticeView;
         [self.demoNoticeView showInView:self.view
                                animated:YES
                       dismissAfterDelay:2.0
